@@ -35,7 +35,7 @@ jobs:
         POSTGRES_USER: django_user
         POSTGRES_PASSWORD: django_password
         POSTGRES_DB: django_db
-        DB_HOST: 0.0.0.0
+        DB_HOST: 127.0.0.1
         DB_PORT: 5432
       run: |
         python -m flake8 backend/
@@ -61,7 +61,7 @@ jobs:
         with:
           context: ./backend/
           push: true
-          tags: alexeont/taski_backend:latest
+          tags: alexeont/kittygram_backend:latest
 
   frontend_tests:
     runs-on: ubuntu-latest
@@ -102,7 +102,7 @@ jobs:
         with:
           context: ./frontend/
           push: true
-          tags: alexeont/taski_frontend:latest
+          tags: alexeont/kittygram_frontend:latest
 
   build_gateway_and_push_to_docker_hub:
     name: Push gateway Docker image to DockerHub
@@ -122,7 +122,7 @@ jobs:
         with:
           context: ./nginx/
           push: true
-          tags: alexeont/taski_gateway:latest
+          tags: alexeont/kittygram_gateway:latest
 
   deploy:
     runs-on: ubuntu-latest
