@@ -19,15 +19,14 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-    - name: Check out code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: 3.9
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip 
+        python -m pip install --upgrade pip
         pip install flake8==6.0.0 flake8-isort==6.0.0
         pip install -r ./backend/requirements.txt
     - name: Test with flake8 and django tests
@@ -61,7 +60,7 @@ jobs:
         with:
           context: ./backend/
           push: true
-          tags: alexeont/taski_backend:latest
+          tags: alexeont/kittygram_backend:latest
 
   frontend_tests:
     runs-on: ubuntu-latest
@@ -102,7 +101,7 @@ jobs:
         with:
           context: ./frontend/
           push: true
-          tags: alexeont/taski_frontend:latest
+          tags: alexeont/kittygram_frontend:latest
 
   build_gateway_and_push_to_docker_hub:
     name: Push gateway Docker image to DockerHub
@@ -122,7 +121,7 @@ jobs:
         with:
           context: ./nginx/
           push: true
-          tags: alexeont/taski_gateway:latest
+          tags: alexeont/kittygram_gateway:latest
 
   deploy:
     runs-on: ubuntu-latest
