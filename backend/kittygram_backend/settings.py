@@ -16,7 +16,7 @@ else:
 
 ALLOWED_HOSTS = ['51.250.16.214', '127.0.0.1', 'localhost', 'doggyproj.ddns.net']
 
-#ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
