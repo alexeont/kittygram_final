@@ -1,26 +1,56 @@
-#  Как работать с репозиторием финального задания
+![example workflow](https://github.com/alexeont/kittygram_final/actions/workflows/main.yml/badge.svg?event=push)
 
-## Что нужно сделать
+##  Описание проекта Kittygram:
 
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
+на сайте можно посмотреть на котиков,
+а залогиненные пользователи могут оставлять карточки с фотографиями и достижениями своих питомцев
 
-## Как проверить работу с помощью автотестов
+## Cтек технологий:
 
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
+Python 3.9 as programming language
+Django 3.2 as web framework
+Django REST framework 3.12 as toolkit for building Web APIs
+POSTGRESQL as database
+GitHub as repo and workflows manager
+Docker as deploy and containerization service
+
+## Установка:
+
+Клонировать репозиторий и перейти в него в командной строке:
+
+```
+git clone https://github.com/alexeont/kittygram_final
+cd kittygram_final
 ```
 
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
+Cоздать и активировать виртуальное окружение:
 
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
+```
+cd backend
+python -m venv venv
+```
 
-## Чек-лист для проверки перед отправкой задания
+```
+source venv/Scripts/activate
+```
 
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
+```
+python -m pip install --upgrade pip
+```
+
+Установить зависимости из файла requirements.txt:
+
+```
+pip install -r requirements.txt
+```
+
+Создать файл зависимостей среды .env в корне проекта. Образец -- .env.example
+
+
+## Запуск проекта на удаленном сервере:
+
+В своем репозитории на GitHub в разделе настроек добавить необходимые секреты для файла .github/workflows/main.yml
+Перенести в папку проекта на сервере файл .env
+Запушить проект на гит, чтобы запустить процесс автоматического деплоя
+
+Автор проекта: Александр Леонтьев
